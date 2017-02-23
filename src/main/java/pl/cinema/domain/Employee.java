@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Pracownicy")
 public class Employee {
+	@Transient
+	private static final long serialVersionUID = 102831973239L;
 	
 	@Id
 	@GeneratedValue
