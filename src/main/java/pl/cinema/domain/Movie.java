@@ -1,43 +1,59 @@
 package pl.cinema.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
 public class Movie {
 
+//	@Id
+//	@GeneratedValue
 	private long movieId;
-	private static long nextId=1;
-	private int ageRestriction;
-	private String title;
+//	@Column(name="tytu³_angielski", nullable=false)
+	private String englishTitle;
+//	@Column(name="tytu³_polski")
+	private String polishTitle;
+//	@Column(name="rok_produkcji")
 	private int productionYear;
+//	@Column(name="kraj_produkcji")
 	private String productionCountry;
+//	@Column(name="rezyser")
 	private String director;
+//	@Column(name="czas_trwania")
 	private int length;
 	
-	public Movie(long movieId, int ageRestriction, String title, int productionYear, String productionCountry,
-			String director, int length) {
+	
+	public Movie(String englishTitle, String polishTitle, int productionYear, String productionCountry, String director,
+			int length) {
 		super();
-		this.movieId = nextId;
-		nextId++;
-		this.ageRestriction = ageRestriction;
-		this.title = title;
+		this.englishTitle = englishTitle;
+		this.polishTitle = polishTitle;
 		this.productionYear = productionYear;
 		this.productionCountry = productionCountry;
 		this.director = director;
 		this.length = length;
 	}
-	
+	@Override
+	public String toString() {
+		return "Movie [movieId=" + movieId + ", englishTitle=" + englishTitle + ", polishTitle=" + polishTitle
+				+ ", productionYear=" + productionYear + ", productionCountry=" + productionCountry + ", director="
+				+ director + ", length=" + length + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ageRestriction;
 		result = prime * result + ((director == null) ? 0 : director.hashCode());
+		result = prime * result + ((englishTitle == null) ? 0 : englishTitle.hashCode());
 		result = prime * result + length;
 		result = prime * result + (int) (movieId ^ (movieId >>> 32));
+		result = prime * result + ((polishTitle == null) ? 0 : polishTitle.hashCode());
 		result = prime * result + ((productionCountry == null) ? 0 : productionCountry.hashCode());
 		result = prime * result + productionYear;
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -47,16 +63,24 @@ public class Movie {
 		if (getClass() != obj.getClass())
 			return false;
 		Movie other = (Movie) obj;
-		if (ageRestriction != other.ageRestriction)
-			return false;
 		if (director == null) {
 			if (other.director != null)
 				return false;
 		} else if (!director.equals(other.director))
 			return false;
+		if (englishTitle == null) {
+			if (other.englishTitle != null)
+				return false;
+		} else if (!englishTitle.equals(other.englishTitle))
+			return false;
 		if (length != other.length)
 			return false;
 		if (movieId != other.movieId)
+			return false;
+		if (polishTitle == null) {
+			if (other.polishTitle != null)
+				return false;
+		} else if (!polishTitle.equals(other.polishTitle))
 			return false;
 		if (productionCountry == null) {
 			if (other.productionCountry != null)
@@ -65,31 +89,25 @@ public class Movie {
 			return false;
 		if (productionYear != other.productionYear)
 			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
-			return false;
 		return true;
 	}
-
 	public long getMovieId() {
 		return movieId;
 	}
 	public void setMovieId(long movieId) {
 		this.movieId = movieId;
 	}
-	public int getAgeRestriction() {
-		return ageRestriction;
+	public String getEnglishTitle() {
+		return englishTitle;
 	}
-	public void setAgeRestriction(int ageRestriction) {
-		this.ageRestriction = ageRestriction;
+	public void setEnglishTitle(String englishTitle) {
+		this.englishTitle = englishTitle;
 	}
-	public String getTitle() {
-		return title;
+	public String getPolishTitle() {
+		return polishTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPolishTitle(String polishTitle) {
+		this.polishTitle = polishTitle;
 	}
 	public int getProductionYear() {
 		return productionYear;
@@ -115,7 +133,7 @@ public class Movie {
 	public void setLength(int length) {
 		this.length = length;
 	}
-
+	
 
 	
 	

@@ -4,26 +4,36 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Time;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 public class Seanse {
-
-	private static long nextId=1;
+	
+//	@Id
+//	@GeneratedValue
 	private long seanseId;
-	private Movie movie;
+/*	@Column(name="id_filmu")
+	private Movie movie;*/
+//	@Column(name="rodzaj_seansu")
 	private String type; //3D or 2D Seanse
+//	@Column(name="data", nullable=false)
 	private Date date;
+//	@Column(name="czas", nullable=false)
 	private Time time;
+//	@Column(name="jezyk")
 	private String languageSpoken; //dubbing/english/polish and so on
+//	@Column(name="cena", nullable=false, precision=4, scale=2)
 	private BigDecimal price;
 	
 	
 	public Seanse(long seanseId, Movie movie, String type, Date date, Time time, String languageSpoken) {
 		super();
-		this.seanseId = nextId;
-		nextId++;
-		this.movie = movie;
+		this.seanseId = seanseId;
+//		this.movie = movie;
 		this.type = type;
 		this.date = date;
 		this.time = time;
@@ -41,12 +51,12 @@ public class Seanse {
 	public void setSeanseId(long seanseId) {
 		this.seanseId = seanseId;
 	}
-	public Movie getMovie() {
+/*	public Movie getMovie() {
 		return movie;
 	}
 	public void setMovie(Movie movie) {
 		this.movie = movie;
-	}
+	}*/
 	public String getType() {
 		return type;
 	}

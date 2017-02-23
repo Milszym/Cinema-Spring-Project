@@ -22,7 +22,7 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	
+
 <link rel="shortcut icon" href="resource/images/balloon.png">
 <title>Kino Chino</title>
 
@@ -39,7 +39,7 @@
 			<br />
 
 			<p class="headingSmaller"
-				style="font-size: 40px; display: none;text-align: center; position: absolute; margin-left: auto; margin-right: auto; top: 165px; left: 0; right: 0;"
+				style="font-size: 40px; display: none; text-align: center; position: absolute; margin-left: auto; margin-right: auto; top: 165px; left: 0; right: 0;"
 				id="demo2">
 				<spring:message code="welcome.description" />
 			</p>
@@ -51,11 +51,16 @@
 
 		<div class="rowsdas">
 
-			<div style="text-align:center">
-				<button type="button" class="btn btn-default"
-					 id="balloonButton">Show
+			<div style="text-align: center">
+				<button type="button" class="btn btn-default" id="balloonButton">Show
 					me what you got!</button>
-<!-- 				<br /> <br /> <img id="balloonPng"
+
+
+				<form action="<c:url value="/welcome/test"></c:url>">
+					<input type="submit" value="Test Hibernate!" class="btn btn-primary" style="color:white"/>
+				</form>
+
+				<!-- 				<br /> <br /> <img id="balloonPng"
 					src="resource/images/balloon.png"
 					style="text-align: center; height: 10%; width: 10%"></img> -->
 			</div>
