@@ -6,45 +6,49 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
-
+@Entity(name="Tickets")
+@Table(name="Bilety")
 public class Ticket {
 	
-//	@Transient
+	@Transient
 	private final static double studentDiscount = 0.8;
-//	@Transient
+	@Transient
 	private final static double childDiscount = 0.71;
-//	@Transient
-	private static long nextId = 1;
 
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
 	private long ticketId;
-/*	@Column(name="id_seansu")
-	private Seanse seanse;*/
-//	@Column(name="miejsce_siedzace")
+	@JoinColumn(name="id_seansu")
+	@ManyToOne
+	private Seanse seanse;
+	@Column(name="miejsce_siedzace")
 	private int seat;
-//	@Column(name="rzad")
+	@Column(name="rzad")
 	private int row; 
-//	@Column(name="typ_biletu")
+	@Column(name="typ_biletu")
 	private String type; //student(ulgowy_studencki)/adult(normalny)/child(ulga_uczniowska)
-	//private Customer customer;
-//	@Column(name="cena_koncowa", nullable=false, precision=10, scale=2)
+	@Column(name="cena_koncowa", nullable=false, precision=10, scale=2)
 	private BigDecimal finalPrice;
 	
-	public Ticket(long ticketId, Seanse seanse, int seat, int row, String type) {
+	public Ticket(Seanse seanse, int seat, int row, String type) {
 		super();
-		this.ticketId = nextId;
-		nextId++;
-//		this.seanse = seanse;
+		this.seanse = seanse;
 		this.seat = seat;
 		this.row = row;
 		this.type = type;
-//		this.finalPrice = countFinalPrice();
+		this.finalPrice = countFinalPrice();
 	}
 	
-/*	private BigDecimal countFinalPrice(){
+	public Ticket(){
+		super();
+	}
+	
+	private BigDecimal countFinalPrice(){
 		if(this.type==null || this.type.equals("") || this.type.equals("adult"))
 			return this.seanse.getPrice();
 		else if(type == "student")
@@ -53,7 +57,7 @@ public class Ticket {
 			return this.seanse.getPrice().multiply(new BigDecimal(childDiscount));
 		else 
 			return this.seanse.getPrice();
-	}*/
+	}
 
 	public BigDecimal getFinalPrice() {
 		return finalPrice;
@@ -72,13 +76,13 @@ public class Ticket {
 	}
 
 
-/*	public Seanse getSeanse() {
+	public Seanse getSeanse() {
 		return seanse;
 	}
 
 	public void setSeanse(Seanse seanse) {
 		this.seanse = seanse;
-	}*/
+	}
 
 	public int getSeat() {
 		return seat;

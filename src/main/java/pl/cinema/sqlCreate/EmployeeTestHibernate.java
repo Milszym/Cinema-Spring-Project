@@ -31,8 +31,8 @@ public class EmployeeTestHibernate {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         entityManager.getTransaction().begin();
-        entityManager.persist( employee );
-        entityManager.persist( employee2 );
+       /* entityManager.persist( employee );
+        entityManager.persist( employee2 );*/
         //entityManager.persist(movie);
         /*Employee emp = entityManager.find(Employee.class, 1L);
         System.out.println(emp.toString());

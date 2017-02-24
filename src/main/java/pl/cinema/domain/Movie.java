@@ -1,28 +1,35 @@
 package pl.cinema.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-
+@Entity(name="Movies")
+@Table(name="Filmy")
 public class Movie {
 
-//	@Id
-//	@GeneratedValue
+	@Id
+	@GeneratedValue
 	private long movieId;
-//	@Column(name="tytu³_angielski", nullable=false)
+	@Column(name="tytu³_angielski", nullable=false)
 	private String englishTitle;
-//	@Column(name="tytu³_polski")
+	@Column(name="tytu³_polski")
 	private String polishTitle;
-//	@Column(name="rok_produkcji")
+	@Column(name="rok_produkcji")
 	private int productionYear;
-//	@Column(name="kraj_produkcji")
+	@Column(name="kraj_produkcji")
 	private String productionCountry;
-//	@Column(name="rezyser")
+	@Column(name="rezyser")
 	private String director;
-//	@Column(name="czas_trwania")
+	@Column(name="czas_trwania")
 	private int length;
+	@OneToMany(mappedBy = "movie")
+	private List<Seanse> seanses;
 	
 	
 	public Movie(String englishTitle, String polishTitle, int productionYear, String productionCountry, String director,
@@ -35,6 +42,11 @@ public class Movie {
 		this.director = director;
 		this.length = length;
 	}
+	
+	public Movie(){
+		super();
+	}
+	
 	@Override
 	public String toString() {
 		return "Movie [movieId=" + movieId + ", englishTitle=" + englishTitle + ", polishTitle=" + polishTitle
