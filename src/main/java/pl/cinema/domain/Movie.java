@@ -28,12 +28,29 @@ public class Movie {
 	private String director;
 	@Column(name="czas_trwania")
 	private int length;
+	@Column(name="gatunek")
+	private String genre;
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public List<Seanse> getSeanses() {
+		return seanses;
+	}
+
+	public void setSeanses(List<Seanse> seanses) {
+		this.seanses = seanses;
+	}
 	@OneToMany(mappedBy = "movie")
 	private List<Seanse> seanses;
 	
 	
 	public Movie(String englishTitle, String polishTitle, int productionYear, String productionCountry, String director,
-			int length) {
+			int length, String genre) {
 		super();
 		this.englishTitle = englishTitle;
 		this.polishTitle = polishTitle;
@@ -41,6 +58,7 @@ public class Movie {
 		this.productionCountry = productionCountry;
 		this.director = director;
 		this.length = length;
+		this.genre=genre;
 	}
 	
 	public Movie(){

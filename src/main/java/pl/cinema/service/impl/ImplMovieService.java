@@ -16,8 +16,7 @@ public class ImplMovieService implements MovieService{
 	private MovieRepository movieRepository;
 
 	public List<Movie> getAllMovies() {
-		// TODO Auto-generated method stub
-		return null;
+		return movieRepository.getAllMovies();
 	}
 	
 }

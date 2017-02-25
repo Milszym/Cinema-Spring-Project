@@ -24,7 +24,9 @@ $(document).ready(function() {
 	var img = document.getElementById('balloonPng');
 	$("#demo2").hide();
 	$("#balloonPng").hide();
-
+	$("#demo2").css({
+		fontSize : 52
+	});
 	$("#mainHeader").mouseover(function() {
 		$("#demo2").fadeIn();
 	});
@@ -33,23 +35,35 @@ $(document).ready(function() {
 		$("#demo2").fadeOut();
 	});
 
-/*	$("#balloonButton").click(function() {
-		$("#balloonPng").fadeIn();
-		$("#balloonPng").animate({
-			left : (window.screen.availWidth / 2),
-			height : '+=10px',
-			width : '+=10px'
+	$('#rowMenu1').hover(function() {
+		$(this).stop().animate({
+			fontSize : '62px'
+		}, 200);
+	}, function() {
+		$(this).stop().animate({
+			fontSize : '50px'
+		}, 200);
+	});
+	
+	$('#rowMenu2').hover(function() {
+		$(this).stop().animate({
+			fontSize : '62px'
+		}, 200);
+	}, function() {
+		$(this).stop().animate({
+			fontSize : '50px'
+		}, 200);
+	});
+	
+	$('#rowMenu3').hover(function() {
+		$(this).stop().animate({
+			fontSize : '62px'
+		}, 200);
+	}, function() {
+		$(this).stop().animate({
+			fontSize : '50px'
+		}, 200);
+	});
 
-		});
-		img = document.getElementById('balloonPng');
-		if (img.clientWidth > 150) {
-				$("#balloonPng").animate({
-					left : (window.screen.availWidth*3),
-					height : '+=2000px',
-					width : '+=2000px'
-			});
 
-		}
-		
-	});*/
 });
