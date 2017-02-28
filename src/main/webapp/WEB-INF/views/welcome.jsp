@@ -27,7 +27,7 @@
 <title>Kino Chino</title>
 
 </head>
-<body style="background-color: #18446b;">
+<body>
 
 	<section>
 		<!-- onmouseover="alert('Czesc')"-->
@@ -63,7 +63,7 @@
 						</p>
 					
 				</div>
-			</a> <a href="<c:url value="/welcome/test"></c:url>">
+			</a> <a href="<c:url value="/seanses"></c:url>">
 				<div class="col-md-4 col-sm-4 col-lg-4" id="rowMenu3">
 					
 						<p>

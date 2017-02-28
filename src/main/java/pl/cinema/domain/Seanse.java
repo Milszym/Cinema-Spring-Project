@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name="Seanse")
 public class Seanse {
 	
+
 	@Id
 	@GeneratedValue
 	private long seanseId;
@@ -94,5 +95,11 @@ public class Seanse {
 		this.languageSpoken = languageSpoken;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "Seanse [seanseId=" + seanseId + ", movie=" + movie + ", tickets=" + tickets + ", type=" + type
+				+ ", date=" + date + ", time=" + time + ", languageSpoken=" + languageSpoken + ", price=" + price + "]";
+	}
 	
 }

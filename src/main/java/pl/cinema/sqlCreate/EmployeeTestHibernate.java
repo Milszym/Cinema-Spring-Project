@@ -1,31 +1,34 @@
 package pl.cinema.sqlCreate;
 
-import java.math.BigDecimal;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
-import javax.persistence.spi.PersistenceProvider;
-
-import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import pl.cinema.domain.Movie;
 import pl.cinema.domain.Seanse;
-import pl.cinema.domain.Ticket;
 import pl.cinema.service.MovieService;
+import pl.cinema.service.SeanseService;
 
 public class EmployeeTestHibernate {
 	@Autowired
 	private static MovieService movieService;
-	
+	@Autowired
+	private static SeanseService seanseService;
+
 	public static void main(String args[]){
 		
+		List<Seanse> seansesByDate = new ArrayList<Seanse>();
+		
+		String day = "24";
 
+		java.util.Date date = new java.util.Date();
+		java.sql.Date dateSql = new java.sql.Date(date.getYear(), 5, 24);
+				
+		seansesByDate = seanseService.getAllSeanses();
+		
+		for(Seanse s: seansesByDate){
+			s.toString();
+		}
 		
 /*		EntityManagerFactory entityManagerFactory;
 
@@ -39,7 +42,7 @@ public class EmployeeTestHibernate {
 		
 		
 		movies = new ArrayList<Movie>();*/
-		List<Movie> movies = new ArrayList<Movie>();
+/*		List<Movie> movies = new ArrayList<Movie>();
 		PersistenceProvider provider = new HibernatePersistenceProvider();
 		EntityManagerFactory entityManagerFactory = provider.createEntityManagerFactory("cinemaDatabase", null);
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -54,7 +57,7 @@ public class EmployeeTestHibernate {
 		entityManager.getTransaction().commit();
 		System.out.println("Database transactions ended successfull.");
 		entityManager.close();
-		System.out.println("Database connection closing successfull.");
+		System.out.println("Database connection closing successfull.");*/
 		
 		
 /*		entityManager.getTransaction().begin();
@@ -72,5 +75,5 @@ public class EmployeeTestHibernate {
 		entityManager.close();*/
 		
 	}
-	
+
 }

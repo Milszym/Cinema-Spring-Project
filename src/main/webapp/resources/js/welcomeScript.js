@@ -20,7 +20,26 @@ function showById(id) {
 	document.getElementById(id).style.display = "block";
 }
 
+function addCalendarLi(){
+	var container = document.getElementById(".days");
+	
+	for (var i = 0; i < 31; i++) {
+	   container.innerHTML += '<a href="/seanses/'+i+'"><li>'+i+'</li></a>';
+	}
+}
+
 $(document).ready(function() {
+		
+	var txt;
+	for(var i=0;i<31;i++){
+		
+		txt = '<a href="/cinema/seanses/'+i+'"><li>'+i+'</li></a>';
+		$(".days").append(txt);
+		
+	}
+	
+	
+	
 	var img = document.getElementById('balloonPng');
 	$("#demo2").hide();
 	$("#balloonPng").hide();
@@ -65,5 +84,6 @@ $(document).ready(function() {
 		}, 200);
 	});
 
-
+	$()
+	
 });
