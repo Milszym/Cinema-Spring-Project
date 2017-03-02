@@ -20,16 +20,20 @@ function showById(id) {
 	document.getElementById(id).style.display = "block";
 }
 
-function addCalendarLi() {
+
+/*function addCalendarLi() {
 	var container = document.getElementById(".days");
 
 	for (var i = 0; i < 31; i++) {
 		container.innerHTML += '<a href="/seanses/' + i + '"><li>' + i
 				+ '</li></a>';
 	}
-}
+}*/
 
+var monthCounter=0;
 $(document).ready(
+		
+		
 		function() {
 
 			var txt;
@@ -42,7 +46,14 @@ $(document).ready(
 			var d2 = LastDayOfMonth(d.getFullYear(), d.getMonth()+1);
 		    var lastDayOfMonth= d2.getDate();
 			
-			for (var i = 0; i < 39; i++) {
+		    var months = [ "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", 
+	               "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień" ];
+
+		    var selectedMonthName = months[d2.getMonth()+monthCounter];
+		    var txt2=selectedMonthName+'<br> <span style="font-size: 18px" id="calYear">'+d2.getFullYear()+'</span>';
+		    $("#calMonth").append(txt2);
+		    
+		    for (var i = 0; i < 39; i++) {
 
 				if (i < firstDay-1) {
 					$(".days").append("<li> </li>");
@@ -55,6 +66,14 @@ $(document).ready(
 					}
 				}
 			}
+		    
+			
+			$(".prevMonth").onclick(function(){
+				monthCounter=monthCounter-1;
+			})
+			$(".nextMonth").onclick(function(){
+				monthCounter=monthCounter+1;
+			})
 
 			function LastDayOfMonth(Year, Month) {
 				return new Date((new Date(Year, Month, 1)) - 1);

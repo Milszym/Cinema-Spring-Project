@@ -18,7 +18,7 @@
 		<security:logout logout-success-url="/logout" />
 	</security:http>
 
-	<security:authentication-manager>
+	<security:authentication-manager erase-credentials="false">
 		<security:authentication-provider>
 			<security:jdbc-user-service
 				data-source-ref="myDataSource"
@@ -29,7 +29,7 @@
 
 				authorities-by-username-query="
 				        SELECT u.username, r.roleName 
-				        FROM Users u, Roles r, usersandroles b
+				        FROM użytkownicy u, role r, usersandroles b
 				        WHERE u.id = b.user_id AND r.roleId=b.role_id
 				        AND u.username=?;"
 				role-prefix="ROLE_"></security:jdbc-user-service>
@@ -38,6 +38,7 @@
 				<security:user name="Admin" password="Admin123"
 					authorities="ROLE_ADMIN" />
 			</security:user-service>
+			
 		</security:authentication-provider>
 	</security:authentication-manager>
 
