@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-3.2.xsd
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
@@ -18,30 +18,33 @@
 		<security:logout logout-success-url="/logout" />
 	</security:http>
 
-	<security:authentication-manager erase-credentials="false">
+	<security:authentication-manager
+		erase-credentials="true">
 		<security:authentication-provider>
 			<security:jdbc-user-service
 				data-source-ref="myDataSource"
 
 				users-by-username-query="
-				         SELECT u.username,u.password FROM Users u
-				         WHERE u.username=?;"
+				         SELECT username,password,'true' as enabled FROM użytkownicy 
+				         WHERE username=?"
 
 				authorities-by-username-query="
 				        SELECT u.username, r.roleName 
 				        FROM użytkownicy u, role r, usersandroles b
 				        WHERE u.id = b.user_id AND r.roleId=b.role_id
-				        AND u.username=?;"
+				        AND u.username=?"
 				role-prefix="ROLE_"></security:jdbc-user-service>
-			<security:user-service>
 
-				<security:user name="Admin" password="Admin123"
-					authorities="ROLE_ADMIN" />
-			</security:user-service>
-			
+
 		</security:authentication-provider>
 	</security:authentication-manager>
 
-
+	<bean id="myDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/cinemaDatabase" />
+		<property name="username" value="root" />
+		<property name="password" value="szczypi)rek13" />
+	</bean>
 
 </beans>
