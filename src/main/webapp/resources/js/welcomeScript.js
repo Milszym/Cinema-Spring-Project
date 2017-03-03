@@ -30,12 +30,11 @@ function showById(id) {
 	}
 }*/
 
-var monthCounter=0;
+
 $(document).ready(
 		
 		
 		function() {
-
 			var txt;
 			var counter = 1;
 			var d = new Date();
@@ -46,12 +45,7 @@ $(document).ready(
 			var d2 = LastDayOfMonth(d.getFullYear(), d.getMonth()+1);
 		    var lastDayOfMonth= d2.getDate();
 			
-		    var months = [ "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", 
-	               "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień" ];
-
-		    var selectedMonthName = months[d2.getMonth()+monthCounter];
-		    var txt2=selectedMonthName+'<br> <span style="font-size: 18px" id="calYear">'+d2.getFullYear()+'</span>';
-		    $("#calMonth").append(txt2);
+		   
 		    
 		    for (var i = 0; i < 39; i++) {
 
