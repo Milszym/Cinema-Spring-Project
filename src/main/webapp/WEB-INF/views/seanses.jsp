@@ -78,10 +78,9 @@
 
 			<div class="month">
 				<ul>
-					<li class="prev">❮</li>
-					<li class="next">❯</li>
-					<li style="text-align: center">Kwiecień<br> <span
-						style="font-size: 18px">2016</span>
+					<li class="prevMonth">❮</li>
+					<li class="nextMonth">❯</li>
+					<li style="text-align: center" id="calMonth">
 					</li>
 				</ul>
 			</div>
