@@ -77,9 +77,9 @@
 		<div class="rows">
 		
 			<div class="col-sm-12 col-lg-12 col-md-12">
-			
-			
-			
+				<c:if test="${isSeanse == 0}">
+				   <a href="<spring:url value="/seanses"></spring:url>"><button type="button">Seanse</button></a>
+				</c:if>
 			</div>
 		
 		</div>

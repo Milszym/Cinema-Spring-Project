@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 
 function changeSizeFunction() {
 	document.getElementById('demo2').style.fontSize = "56px";
@@ -21,14 +19,14 @@ function showById(id) {
 }
 
 
-/*function addCalendarLi() {
+function addCalendarLi() {
 	var container = document.getElementById(".days");
 
 	for (var i = 0; i < 31; i++) {
 		container.innerHTML += '<a href="/seanses/' + i + '"><li>' + i
 				+ '</li></a>';
 	}
-}*/
+}
 
 
 $(document).ready(

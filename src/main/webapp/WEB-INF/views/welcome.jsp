@@ -30,7 +30,6 @@
 <body>
 
 	<section>
-		<!-- onmouseover="alert('Czesc')"-->
 		<div class="jumbotron" id="mainHeader">
 			<p class="headingger" style="font-size: 72px">
 				<spring:message code="welcome.mainHeading" />
@@ -55,7 +54,7 @@
 						</p>
 
 				</div>
-			</a> <a href="<c:url value="/welcome/test"></c:url>">
+			</a> <a href="<c:url value="/tickets"></c:url>">
 				<div class="col-md-4 col-sm-4 col-lg-4" id="rowMenu2">
 
 						<p>
@@ -74,7 +73,7 @@
 			</a>
 		</div>
 
-		</div>
+		
 
 
 
