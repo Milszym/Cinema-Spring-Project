@@ -1,4 +1,6 @@
-
+/**
+ * 
+ */
 
 function changeSizeFunction() {
 	document.getElementById('demo2').style.fontSize = "56px";
@@ -18,103 +20,90 @@ function showById(id) {
 	document.getElementById(id).style.display = "block";
 }
 
-
-function addCalendarLi() {
+function addCalendarLi(){
 	var container = document.getElementById(".days");
-
+	
 	for (var i = 0; i < 31; i++) {
-		container.innerHTML += '<a href="/seanses/' + i + '"><li>' + i
-				+ '</li></a>';
+	   container.innerHTML += '<a href="/seanses/'+i+'"><li>'+i+'</li></a>';
 	}
 }
 
-
-$(document).ready(
+$(document).ready(function() {
 		
-		
-		function() {
-			var txt;
-			var counter = 1;
-			var d = new Date();
-			d.setDate(1);
-			var firstDay = d.getDay();
-			d=new Date();
-			
-			var d2 = LastDayOfMonth(d.getFullYear(), d.getMonth()+1);
-		    var lastDayOfMonth= d2.getDate();
-			
-		   
-		    
-		    for (var i = 0; i < 39; i++) {
+	
+	var txt;
+	var counter = 1;
+	var d = new Date();
+	d.setDate(1);
+	var firstDay = d.getDay();
+	d = new Date();
 
-				if (i < firstDay-1) {
-					$(".days").append("<li> </li>");
-				} else {
-					while (counter <= lastDayOfMonth) {
-						txt = '<a href="/cinema/seanses/' + counter + '"><li>'
-								+ counter + '</li></a>';
-						$(".days").append(txt);
-						counter = counter + 1;
-					}
-				}
+	var d2 = LastDayOfMonth(d.getFullYear(), d.getMonth() + 1);
+	var lastDayOfMonth = d2.getDate();
+
+	for (var i = 0; i < 39; i++) {
+
+		if (i < firstDay - 1) {
+			$(".days").append("<li> </li>");
+		} else {
+			while (counter <= lastDayOfMonth) {
+				txt = '<a href="/cinema/seanses/' + counter + '"><li>'
+						+ counter + '</li></a>';
+				$(".days").append(txt);
+				counter = counter + 1;
 			}
-		    
-			
-			$(".prevMonth").onclick(function(){
-				monthCounter=monthCounter-1;
-			})
-			$(".nextMonth").onclick(function(){
-				monthCounter=monthCounter+1;
-			})
+		}
+	}
+	
+	function LastDayOfMonth(Year, Month) {
+		return new Date((new Date(Year, Month, 1)) - 1);
+	}
+	
+	
+	var img = document.getElementById('balloonPng');
+	$("#demo2").hide();
+	$("#balloonPng").hide();
+	$("#demo2").css({
+		fontSize : 52
+	});
+	$("#mainHeader").mouseover(function() {
+		$("#demo2").fadeIn();
+	});
 
-			function LastDayOfMonth(Year, Month) {
-				return new Date((new Date(Year, Month, 1)) - 1);
-			}
+	$('#mainHeader').mouseleave(function() {
+		$("#demo2").fadeOut();
+	});
 
-			var img = document.getElementById('balloonPng');
-			$("#demo2").hide();
-			$("#balloonPng").hide();
-			$("#demo2").css({
-				fontSize : 52
-			});
-			$("#mainHeader").mouseover(function() {
-				$("#demo2").fadeIn();
-			});
+	$('#rowMenu1').hover(function() {
+		$(this).stop().animate({
+			fontSize : '62px'
+		}, 200);
+	}, function() {
+		$(this).stop().animate({
+			fontSize : '50px'
+		}, 200);
+	});
+	
+	$('#rowMenu2').hover(function() {
+		$(this).stop().animate({
+			fontSize : '62px'
+		}, 200);
+	}, function() {
+		$(this).stop().animate({
+			fontSize : '50px'
+		}, 200);
+	});
+	
+	$('#rowMenu3').hover(function() {
+		$(this).stop().animate({
+			fontSize : '62px'
+		}, 200);
+	}, function() {
+		$(this).stop().animate({
+			fontSize : '50px'
+		}, 200);
+	});
 
-			$('#mainHeader').mouseleave(function() {
-				$("#demo2").fadeOut();
-			});
-
-			$('#rowMenu1').hover(function() {
-				$(this).stop().animate({
-					fontSize : '62px'
-				}, 200);
-			}, function() {
-				$(this).stop().animate({
-					fontSize : '50px'
-				}, 200);
-			});
-
-			$('#rowMenu2').hover(function() {
-				$(this).stop().animate({
-					fontSize : '62px'
-				}, 200);
-			}, function() {
-				$(this).stop().animate({
-					fontSize : '50px'
-				}, 200);
-			});
-
-			$('#rowMenu3').hover(function() {
-				$(this).stop().animate({
-					fontSize : '62px'
-				}, 200);
-			}, function() {
-				$(this).stop().animate({
-					fontSize : '50px'
-				}, 200);
-			});
-
-			$()
-
-		});
+	
+	
+});
