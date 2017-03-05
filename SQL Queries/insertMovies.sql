@@ -35,7 +35,7 @@ INSERT INTO filmy
 				148, "Incepcja", "USA, Wielka Brytania", 2010, "Sci-Fi");
                 
                 INSERT INTO filmy
-	(rezyser, tytuł_angielski, czas_trwania, tytuł_polski,
+	(rezyser, tytuł_polski, czas_trwania, tytuł_angielski,
 		kraj_produkcji, rok_produkcji, gatunek)
 	values("Sidney Lumet", "Dwunastu gniewnych ludzi",
 				96, "12 Angry Men", "USA", 1957, "Dramat");

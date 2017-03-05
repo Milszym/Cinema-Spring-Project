@@ -18,5 +18,21 @@ public class ImplMovieService implements MovieService{
 	public List<Movie> getAllMovies() {
 		return movieRepository.getAllMovies();
 	}
+
+	public Movie getMovieById(int movieId) {
+		return movieRepository.getMovieById(movieId);
+	}
+
+	public void createMovie(Movie movie) {
+		movieRepository.createMovie(movie);
+	}
+
+	public void removeMovie(String movieName) {
+		movieRepository.removeMovie(movieName);
+	}
+
+	public void updateMovie(Movie movie) {
+		movieRepository.updateMovie(movie);
+	}
 	
 }

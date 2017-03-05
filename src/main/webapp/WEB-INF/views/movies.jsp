@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,38 +73,87 @@
 
 		</div>
 
+		<c:if test="${exactMovie == 0}">
+			<div class="rows">
 
-		<div class="rows">
-
-			<c:forEach items="${movies}" var="movie">
-				<div class="col-md-12 col-sm-12 col-lg-12" id="movieDiv"
-					style="padding-bottom: 15px;width:90">
-					<div class="rows">
-						<div class="col-md-6 col-sm-6 col-lg-6" style="padding-bottom:50px">
-							<img src="<c:url value="/resource/images/${movie.polishTitle}.jpg"></c:url>" width="350px" height="500px">
-						</div>
-						<div class="col-md-6 col-sm-6 col-lg-6" style="align:center; text-align:center">
-							<br />
-							<p>${movie.polishTitle }</p>
-							<div style="font-size: 20px">
-													
-								<p style="font-size:32px">${movie.englishTitle }</p>
+				<c:forEach items="${movies}" var="movie">
+					<div class="col-md-12 col-sm-12 col-lg-12" id="movieDiv"
+						style="padding-bottom: 15px; width: 90">
+						<div class="rows">
+							<div class="col-md-6 col-sm-6 col-lg-6"
+								style="padding-bottom: 50px">
+								<img
+									src="<c:url value="/resource/images/${movie.polishTitle}.jpg"></c:url>"
+									width="350px" height="500px">
+							</div>
+							<div class="col-md-6 col-sm-6 col-lg-6"
+								style="align: center; text-align: center">
 								<br />
-								<br />	
-								<p>Gatunek: ${movie.genre }</p>
-								<p>Reżyser: ${movie.director }</p>
-								<p>Rok produkcji: ${movie.productionYear }</p>
-								<p>Kraj produkcji: ${movie.productionCountry }</p>
-								<p>Długość: ${movie.length }</p>
+								<p>${movie.polishTitle }</p>
+								<div style="font-size: 20px">
+
+									<p style="font-size: 32px">${movie.englishTitle }</p>
+									<br /> <br />
+									<p>Gatunek: ${movie.genre }</p>
+									<p>Reżyser: ${movie.director }</p>
+									<p>Rok produkcji: ${movie.productionYear }</p>
+									<p>Kraj produkcji: ${movie.productionCountry }</p>
+									<p>Długość: ${movie.length }</p>
+									
+									<c:if test="${moviesAdmin ==1 }">
+										<form:form action="" modelAttribute="movieAdmin"
+											class="form-horizontal" enctype="form-data">
+											<form:input type="hidden" path="englishTitle" name="englishTitle" value="${movie.englishTitle }" /> 
+											<form:input id="genre" path="genre" type="hidden" class="form:input-large" value="${movie.genre }" />
+											<form:input id="polishTitle" path="polishTitle" type="hidden" class="form:input-large" value="${movie.polishTitle }" />
+											<form:input id="length" path="length" type="hidden" class="form:input-large" value="${movie.length }" />
+											<form:input id="director" path="director" type="hidden" class="form:input-large" value="${movie.director }" />
+											<form:input id="productionYear" path="productionYear" type="hidden" class="form:input-large" value="${movie.productionYear }" />
+											<form:input id="productionCountry" path="productionCountry" type="hidden" class="form:input-large" value="${movie.productionCountry }" />
+											<input type="submit" id="btnAdd" class="btn btn-primary" value="<spring:message code="movie.adminMovie" />"/>
+										</form:form>
+									</c:if>
+									
+								</div>
 							</div>
 						</div>
 					</div>
+				</c:forEach>
+
+			</div>
+
+		</c:if>
+
+		<c:if test="${exactMovie == 1}">
+
+			<div class="col-md-12 col-sm-12 col-lg-12" id="movieDiv"
+				style="padding-bottom: 15px; width: 90">
+				<div class="rows">
+					<div class="col-md-6 col-sm-6 col-lg-6"
+						style="padding-bottom: 50px">
+						<img
+							src="<c:url value="/resource/images/${movie.polishTitle}.jpg"></c:url>"
+							width="350px" height="500px">
+					</div>
+					<div class="col-md-6 col-sm-6 col-lg-6"
+						style="align: center; text-align: center">
+						<br />
+						<p>${movie.polishTitle }</p>
+						<div style="font-size: 20px">
+
+							<p style="font-size: 32px">${movie.englishTitle }</p>
+							<br /> <br />
+							<p>Gatunek: ${movie.genre }</p>
+							<p>Reżyser: ${movie.director }</p>
+							<p>Rok produkcji: ${movie.productionYear }</p>
+							<p>Kraj produkcji: ${movie.productionCountry }</p>
+							<p>Długość: ${movie.length }</p>
+						</div>
+					</div>
 				</div>
-			</c:forEach>
+			</div>
 
-		</div>
-
-
+		</c:if>
 
 
 

@@ -24,6 +24,18 @@ public class ImplUserService implements UserService{
 		// TODO Auto-generated method stub
 		return userRepository.getAllUsers();
 	}
+
+	public void createUser(User user) {
+		userRepository.createUser(user);
+	}
+
+	public void removeUser(long userId) {
+		userRepository.removeUser(userId);
+	}
+
+	public void updateUser(User user) {
+		userRepository.updateUser(user);
+	}
 	
 	
 }

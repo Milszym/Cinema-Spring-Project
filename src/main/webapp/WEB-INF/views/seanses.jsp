@@ -75,7 +75,12 @@
 		</div>
 </section>
 		<section class="container" style="margin-bottom: 50px">
-
+			<div style="font-family:Amatic SC; font-size:48px; color:white; text-align:center">
+				<spring:message code="seanses.CalendarHeader" />
+				<br />
+			</div>
+			<br/>
+			
 			<div class="month">
 				<ul>
 					<li class="prevMonth">❮</li>
@@ -139,7 +144,7 @@
 	<section class="container">
 	
 		<div class="rows">
-
+			
 			<c:forEach items="${seanses}" var="seanse">
 				<div class="col-md-12 col-sm-12 col-lg-12" id="movieDiv"
 					style="padding-bottom: 15px;width:90">
@@ -157,6 +162,10 @@
 								<p style="font-size:32px">Język: ${seanse.languageSpoken }</p>
 
 							</div>
+							<a href="<spring:url value="/movies/${seanse.movie.movieId }"></spring:url>"><button
+									class="btn btn-success" type="button" style="font-size:35px; padding:25px">
+									<spring:message code="seanse.buttonMovies" />
+								</button></a>
 						</div>
 					</div>
 				</div>

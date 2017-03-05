@@ -50,38 +50,51 @@
 			<a href="<c:url value="/movies"></c:url>">
 				<div class="col-md-4 col-sm-4 col-lg-4" id="rowMenu1">
 
-						<p>
-							<spring:message code="welcome.rowMenu.movies" />
-						</p>
+					<p>
+						<spring:message code="welcome.rowMenu.movies" />
+					</p>
 
 				</div>
 			</a> <a href="<c:url value="/"></c:url>">
 				<div class="col-md-4 col-sm-4 col-lg-4" id="rowMenu2">
 
-						<p>
-							<spring:message code="welcome.rowMenu.home" />
-						</p>
-					
+					<p>
+						<spring:message code="welcome.rowMenu.home" />
+					</p>
+
 				</div>
 			</a> <a href="<c:url value="/seanses"></c:url>">
 				<div class="col-md-4 col-sm-4 col-lg-4" id="rowMenu3">
-					
-						<p>
-							<spring:message code="welcome.rowMenu.seanses" />
-						</p>
-					
+
+					<p>
+						<spring:message code="welcome.rowMenu.seanses" />
+					</p>
+
 				</div>
 			</a>
 		</div>
 
 		<div class="rows">
-		
-			<div class="col-sm-12 col-lg-12 col-md-12">
-				<c:if test="${isSeanse == 0}">
-				   <a href="<spring:url value="/seanses"></spring:url>"><button type="button">Seanse</button></a>
-				</c:if>
+
+
+			<div class="col-md-12 col-sm-12 col-lg-12" id="movieDiv"
+				style="padding-bottom: 15px; width: 90;background-color: #00225b;">
+				<div class="rows">
+					<div class="col-md-12 col-sm-12 col-lg-12"
+						style="padding-bottom: 50px">
+						<c:if test="${isSeanse == 0}">
+							<spring:message code="tickets.noSeanseChosen" />
+							<br /><br/>
+							<a href="<spring:url value="/seanses"></spring:url>"><button
+									class="btn btn-success" type="button" style="font-size:35px; padding:25px">
+									<spring:message code="tickets.buttonSeanses" />
+								</button></a>
+						</c:if>
+					</div>
+				</div>
 			</div>
-		
+
+
 		</div>
 
 

@@ -25,4 +25,16 @@ public class ImplSeanseService implements SeanseService{
 		return seanseRepository.getSeansesByDate(Date);
 	}
 
+	public void createSeanse(Seanse seanse) {
+		seanseRepository.createSeanse(seanse);
+	}
+
+	public void removeSeanse(long seanseId) {
+		seanseRepository.removeSeanse(seanseId);
+	}
+
+	public void updateSeanse(Seanse seanse) {
+		seanseRepository.updateSeanse(seanse);
+	}
+
 }

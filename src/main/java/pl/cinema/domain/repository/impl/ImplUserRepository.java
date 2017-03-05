@@ -18,7 +18,7 @@ public class ImplUserRepository implements UserRepository {
 
 	private List<User> users;
 
-	private static EntityManager entityConnectionBegin() {
+	private static EntityManager entityManagerBegin() {
 		EntityManagerFactory entityManagerFactory;
 
 		PersistenceProvider provider = new HibernatePersistenceProvider();
@@ -30,7 +30,7 @@ public class ImplUserRepository implements UserRepository {
 		return entityManager;
 	}
 
-	private static void entityConnectionEnd(EntityManager entityManager) {
+	private static void entityManagerEnd(EntityManager entityManager) {
 		entityManager.flush();
 		entityManager.getTransaction().commit();
 		System.out.println("successfull");
@@ -38,7 +38,7 @@ public class ImplUserRepository implements UserRepository {
 	}
 
 	public User getUserByName(String username) {
-		EntityManager entityManager = entityConnectionBegin();
+		EntityManager entityManager = entityManagerBegin();
 
 		User user;
 
@@ -46,20 +46,43 @@ public class ImplUserRepository implements UserRepository {
 				.createQuery("SELECT u FROM Users u WHERE u.username=\"" + username + "\"", User.class);
 		user = query.getSingleResult();
 
-		entityConnectionEnd(entityManager);
+		entityManagerEnd(entityManager);
 
 		return user;
 	}
 
 	public List<User> getAllUsers() {
-		EntityManager entityManager = entityConnectionBegin();
+		EntityManager entityManager = entityManagerBegin();
 
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM Users u", User.class);
 		users = query.getResultList();
 
-		entityConnectionEnd(entityManager);
+		entityManagerEnd(entityManager);
 
 		return users;
 	}
+
+	public void createUser(User user) {
+		EntityManager entityManager = entityManagerBegin();
+		entityManager.persist(user);
+		entityManagerEnd(entityManager);
+	}
+
+	public void removeUser(long userId) {
+		EntityManager entityManager = entityManagerBegin();
+		String txt="DELETE FROM usersandroles ur WHERE ur.user_id="+userId;
+		String txt2="DELETE FROM Users u WHERE u.id="+userId;
+		entityManager.createQuery(txt);
+		entityManager.createQuery(txt2);
+		entityManagerEnd(entityManager);
+	}
+
+	public void updateUser(User user) {
+		EntityManager entityManager = entityManagerBegin();
+		entityManager.merge(user);
+		entityManagerEnd(entityManager);
+	}
+	
+	
 
 }

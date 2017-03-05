@@ -9,5 +9,7 @@ public interface SeanseService {
 
 	List<Seanse> getAllSeanses();
 	Set<Seanse> getSeansesByDate(java.sql.Date Date);
-	
+	void createSeanse(Seanse seanse);
+	void removeSeanse(long seanseId);
+	void updateSeanse(Seanse seanse);
 }
