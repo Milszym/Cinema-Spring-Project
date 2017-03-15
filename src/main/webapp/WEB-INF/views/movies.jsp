@@ -104,6 +104,7 @@
 										<form:form action="" modelAttribute="movieAdmin"
 											class="form-horizontal" enctype="form-data">
 											<form:input type="hidden" path="englishTitle" name="englishTitle" value="${movie.englishTitle }" /> 
+											<form:input type="hidden" path="movieId" name="movieId" value="${movie.movieId }" /> 
 											<form:input id="genre" path="genre" type="hidden" class="form:input-large" value="${movie.genre }" />
 											<form:input id="polishTitle" path="polishTitle" type="hidden" class="form:input-large" value="${movie.polishTitle }" />
 											<form:input id="length" path="length" type="hidden" class="form:input-large" value="${movie.length }" />

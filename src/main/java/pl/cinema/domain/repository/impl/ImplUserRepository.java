@@ -83,6 +83,4 @@ public class ImplUserRepository implements UserRepository {
 		entityManagerEnd(entityManager);
 	}
 	
-	
-
 }

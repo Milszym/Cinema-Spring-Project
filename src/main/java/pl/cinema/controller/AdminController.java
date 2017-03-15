@@ -1,16 +1,23 @@
 package pl.cinema.controller;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pl.cinema.domain.Movie;
 import pl.cinema.domain.Seanse;
@@ -45,6 +52,9 @@ public class AdminController {
 
 		else if (whatToAdd.equals("seanse")) {
 			Seanse newSeanse = new Seanse();
+			if(!movieAdmin.equals(null)){
+				newSeanse.setMovie(movieAdmin);
+			}
 			model.addAttribute("newSeanse", newSeanse);
 		}
 		
@@ -53,8 +63,7 @@ public class AdminController {
 		}
 		
 		System.out.println("/add/seanse GET");
-		System.out.println(movieAdmin.toString());
-		System.out.println("Jak true to jest puste"+movieAdmin.equals(null));
+		System.out.println(movieAdmin.toString()); 
 
 		model.addAttribute("whatToAdd", whatToAdd);
 
@@ -71,8 +80,8 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/seanse", method = RequestMethod.POST)
-	public String addSeansePost(@ModelAttribute("newSeanse") @Valid Seanse seanseToBeAdded, HttpServletRequest request) {
-		
+	public String addSeansePost(@ModelAttribute("newSeanse") @Valid Seanse seanseToBeAdded, BindingResult result,HttpServletRequest request) {
+		 
 		System.out.println("/add/seanse POST");
 		System.out.println(seanseToBeAdded.getMovie().toString());
 		
@@ -83,4 +92,11 @@ public class AdminController {
 		return "add";
 	}
 
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+	    binder.registerCustomEditor(Date.class, "date", new CustomDateEditor(sdf, false));
+	    
+	}
+	
 }

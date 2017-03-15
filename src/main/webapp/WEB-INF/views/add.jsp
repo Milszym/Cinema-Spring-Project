@@ -5,6 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,24 +187,22 @@
 		<section class="container" style="color: white">
 
 			<spring:message code="addSeanse.addMovie" />
-						<br /> <a href="<spring:url value="/movies/admin"></spring:url>"><button
-								class="btn btn-success" type="button"
-								style="font-size: 15px">
-								<spring:message code="seanse.buttonMovies" />
-							</button></a>
-
-			<form:form action="seanse" modelAttribute="newSeanse" class="form-horizontal"
-				enctype="form-data">
+			<br /> <a href="<spring:url value="/movies/admin"></spring:url>"><button
+					class="btn btn-success" type="button" style="font-size: 15px">
+					<spring:message code="seanse.buttonMovies" />
+				</button></a>
+			<form:form action="seanse" modelAttribute="newSeanse"
+				class="form-horizontal" enctype="form-data">
 
 				<fieldset>
 
 					<legend style="color: white">
 						<spring:message code="addSeanse.label" />
 					</legend>
-					
-					
-						
-							
+
+
+
+
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="type">
 							<spring:message code="addSeanse.type" />
@@ -219,8 +218,10 @@
 							<spring:message code="addSeanse.date" />
 						</label>
 						<div class="col-lg-10">
-							<form:input id="date" path="date" type="date"
+							
+							<form:input id="date" path="date" type="text" name="date"
 								class="form:input-large" style="color:black" />
+	
 						</div>
 					</div>
 
@@ -256,13 +257,23 @@
 						</div>
 					</div>
 					${movieAdmin.englishTitle }
-					<form:input type="hidden" path="movie.englishTitle" name="movie.englishTitle" value="${movieAdmin.englishTitle }" />
-					<form:input type="hidden" path="movie.genre" name="movie.genre" value="${movieAdmin.genre }" />
-					<form:input type="hidden" path="movie.polishTitle" name="movie.polishTitle" value="${movieAdmin.polishTitle }" />
-					<form:input type="hidden" path="movie.productionYear" name="movie.productionYear" value="${movieAdmin.productionYear }" />
-					<form:input type="hidden" path="movie.productionCountry" name="movie.productionCountry" value="${movieAdmin.productionCountry }" />
-					<form:input type="hidden" path="movie.length" name="movie.length" value="${movieAdmin.length }" />
-					<form:input type="hidden" path="movie.director" name="movie.director" value="${movieAdmin.director }" />
+					<form:input type="hidden" path="movie.englishTitle"
+						name="movie.englishTitle" value="${movieAdmin.englishTitle }" />
+					<form:input type="hidden" path="movie.movieId" name="movie.movieId"
+						value="${movieAdmin.movieId }" />
+					<form:input type="hidden" path="movie.genre" name="movie.genre"
+						value="${movieAdmin.genre }" />
+					<form:input type="hidden" path="movie.polishTitle"
+						name="movie.polishTitle" value="${movieAdmin.polishTitle }" />
+					<form:input type="hidden" path="movie.productionYear"
+						name="movie.productionYear" value="${movieAdmin.productionYear }" />
+					<form:input type="hidden" path="movie.productionCountry"
+						name="movie.productionCountry"
+						value="${movieAdmin.productionCountry }" />
+					<form:input type="hidden" path="movie.length" name="movie.length"
+						value="${movieAdmin.length }" />
+					<form:input type="hidden" path="movie.director"
+						name="movie.director" value="${movieAdmin.director }" />
 
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
