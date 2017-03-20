@@ -28,4 +28,9 @@ public class LoginController{
 		return "login";
 	}
 	
+	@RequestMapping("/register")
+	public String register(){
+		return "register";
+	}
+	
 }

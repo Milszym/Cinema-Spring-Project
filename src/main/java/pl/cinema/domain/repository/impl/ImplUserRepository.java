@@ -62,4 +62,41 @@ public class ImplUserRepository implements UserRepository {
 		return users;
 	}
 
+	public User getUser(long id) {
+		EntityManager entityManager = entityConnectionBegin();
+		User userFounded = entityManager.find(User.class, id);
+		entityConnectionEnd(entityManager);
+		
+		return userFounded;
+	}
+
+	public User getUser(String username) {
+		EntityManager entityManager = entityConnectionBegin();
+
+		TypedQuery<User> query = entityManager
+				.createQuery("SELECT u FROM Users u WHERE u.username=\"" + username + "\"", User.class);
+		User userFounded = query.getSingleResult();
+		entityConnectionEnd(entityManager);
+		
+		return userFounded;
+	}
+
+	public void removeUser(long id) {
+		EntityManager entityManager = entityConnectionBegin();
+		entityManager.createQuery("DELETE FROM Users u WHERE u.id="+id);
+		entityConnectionEnd(entityManager);
+	}
+
+	public void removeUser(String username) {
+		EntityManager entityManager = entityConnectionBegin();
+		entityManager.createQuery("DELETE FROM Users u WHERE u.username=\"" + username + "\"");
+		entityConnectionEnd(entityManager);
+	}
+
+	public void createUser(User user) {
+		EntityManager entityManager = entityConnectionBegin();
+		entityManager.persist(user);
+		entityConnectionEnd(entityManager);
+	}
+
 }
