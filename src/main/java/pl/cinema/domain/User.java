@@ -5,14 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity(name="Users")
 @Table(name="u¿ytkownicy")
@@ -32,6 +31,8 @@ public class User implements Serializable{
 	private List<Role> roles;
 	@Column
 	private boolean enabled;
+	@Transient
+	private String matchingPassword;
 	
 	public User(String username, String password, List<Role> roles, boolean enabled) {
 		super();
@@ -41,6 +42,20 @@ public class User implements Serializable{
 		this.enabled = enabled;
 	}
 	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", roles=" + roles
+				+ ", enabled=" + enabled + ", matchingPassword=" + matchingPassword + "]";
+	}
+
+	public String getMatchingPassword() {
+		return matchingPassword;
+	}
+
+	public void setMatchingPassword(String matchingPassword) {
+		this.matchingPassword = matchingPassword;
+	}
+
 	public int getId() {
 		return id;
 	}

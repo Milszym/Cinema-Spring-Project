@@ -34,6 +34,13 @@
 			<p class="headingger" style="font-size: 72px">
 				<spring:message code="welcome.mainHeading" />
 			</p>
+			<div style="text-align:left; align:left">
+				<a href="<c:url value="/register" ></c:url>" >
+					<button class="btn btn-default">
+						<spring:message code="welcome.register" />
+					</button>
+				</a>
+			</div>
 			<br />
 
 			<p class="headingSmaller" id="demo2">
