@@ -43,8 +43,9 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "{whatToAdd}", method = RequestMethod.GET)
-	public String addExactThingGet(@ModelAttribute("movieAdmin") @Valid Movie movieAdmin, Model model, @PathVariable("whatToAdd") String whatToAdd) {
+	public String addExactThingGet(@ModelAttribute("movieAdmin") Movie movieAdmin, Model model, @PathVariable("whatToAdd") String whatToAdd) {
 
+		
 		if (whatToAdd.equals("movie")) {
 			Movie newMovie = new Movie();
 			model.addAttribute("newMovie", newMovie);
@@ -71,8 +72,12 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/movie", method = RequestMethod.POST)
-	public String addMoviePost(@ModelAttribute("newMovie") @Valid Movie movieToBeAdded, HttpServletRequest request) {
+	public String addMoviePost(@ModelAttribute("newMovie") Movie movieToBeAdded, Model model, HttpServletRequest request, BindingResult result) {
 
+		if(result.hasErrors()){
+			return "redirect:/add/movie";
+		}
+		
 		System.out.println(movieToBeAdded.toString());
 		movieService.createMovie(movieToBeAdded);
 
@@ -80,8 +85,14 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/seanse", method = RequestMethod.POST)
-	public String addSeansePost(@ModelAttribute("newSeanse") @Valid Seanse seanseToBeAdded, BindingResult result,HttpServletRequest request) {
+	public String addSeansePost(@ModelAttribute("newSeanse") Seanse seanseToBeAdded, Model model, BindingResult result,HttpServletRequest request) {
 		 
+		
+		if(result.hasErrors()){
+			model.addAttribute("whatToAdd", "seanse");
+			return "add";
+		}
+		
 		System.out.println("/add/seanse POST");
 		System.out.println(seanseToBeAdded.getMovie().toString());
 		
@@ -92,11 +103,6 @@ public class AdminController {
 		return "add";
 	}
 
-	@InitBinder
-	public void initBinder(WebDataBinder binder) {
-	    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-	    binder.registerCustomEditor(Date.class, "date", new CustomDateEditor(sdf, false));
-	    
-	}
+
 	
 }

@@ -10,10 +10,11 @@
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<mvc:annotation-driven enable-matrix-variables="true" />
+	<mvc:annotation-driven enable-matrix-variables="true" validator="validator" />
 
 	<mvc:resources location="/resources/" mapping="/resource/**" />
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
 	<!-- <mvc:interceptors> <bean class="com.packt.webstore.interceptor.PerformanceMonitorInterceptor"> 
 		</bean> <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> 
 		<property name="paramName" value="language"></property> </bean> <bean class="com.packt.webstore.interceptor.AuditingInterceptor"></bean> 
@@ -34,7 +35,10 @@
 		<property name="basename" value="messages" />
 	</bean>
 
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
 
-	
 
 </beans>

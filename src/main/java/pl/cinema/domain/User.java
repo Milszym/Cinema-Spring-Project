@@ -12,6 +12,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
+
+import pl.cinema.validator.Username;
 
 @Entity(name="Users")
 @Table(name="u¿ytkownicy")
@@ -20,18 +25,22 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;
+	@Size(min=4, max = 29, message="{Size.User.username.validation}")
 	@Column
 	private String username;
+	//@Size(min=8, max=29, message="{Size.User.password.validation}")
 	@Column
 	private String password;
 	@ManyToMany
 	@JoinTable(name="UsersAndRoles", 
+	
 				joinColumns=@JoinColumn(name="user_id"), 
 				inverseJoinColumns=@JoinColumn(name="role_id"))
 	private List<Role> roles;
 	@Column
 	private boolean enabled;
 	@Transient
+	@Size(min=8, max=29, message="{Size.User.password.validation}")
 	private String matchingPassword;
 	
 	public User(String username, String password, List<Role> roles, boolean enabled) {

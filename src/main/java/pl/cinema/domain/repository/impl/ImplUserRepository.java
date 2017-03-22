@@ -1,5 +1,6 @@
 package pl.cinema.domain.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import javax.persistence.spi.PersistenceProvider;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.stereotype.Repository;
 
+import pl.cinema.domain.Role;
 import pl.cinema.domain.User;
 import pl.cinema.domain.repository.UserRepository;
 
@@ -43,7 +45,7 @@ public class ImplUserRepository implements UserRepository {
 		User user;
 
 		TypedQuery<User> query = entityManager
-				.createQuery("SELECT u FROM Users u WHERE u.username=\"" + username + "\"", User.class);
+				.createQuery("SELECT u FROM Users u WHERE u.username='" + username + "'", User.class);
 		user = query.getSingleResult();
 
 		entityManagerEnd(entityManager);
@@ -64,7 +66,14 @@ public class ImplUserRepository implements UserRepository {
 
 	public void createUser(User user) {
 		EntityManager entityManager = entityManagerBegin();
+		Role role = new Role();
+		List<Role> roles = new ArrayList<Role>();
+		role = entityManager.find(Role.class, 2);
+		roles.add(role);
+		user.setRoles(roles);
 		entityManager.persist(user);
+		//User user2 = entityManager.find(User.class, user);
+		//entityManager.createQuery("INSERT INTO userandroles(user_id, role_id) VALUES("+user2.getId()+", 2)");
 		entityManagerEnd(entityManager);
 	}
 

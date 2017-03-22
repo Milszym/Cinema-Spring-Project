@@ -82,7 +82,7 @@
 
 			<form:form action="movie" modelAttribute="newMovie"
 				class="form-horizontal" enctype="form-data">
-
+				<form:errors path="*" cssClass="alert alert-danger" element="div" />
 
 				<fieldset>
 
@@ -99,7 +99,7 @@
 						<div class="col-lg-10">
 							<form:input id="englishTitle" path="englishTitle" type="text"
 								class="form:input-large" style="color:black" />
-
+							<form:errors path="englishTitle" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -110,7 +110,7 @@
 						<div class="col-lg-10">
 							<form:input id="polishTitle" path="polishTitle" type="text"
 								class="form:input-large" style="color:black" />
-
+							<form:errors path="polishTitle" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -122,7 +122,7 @@
 						<div class="col-lg-10">
 							<form:input id="productionYear" path="productionYear" type="text"
 								class="form:input-large" style="color:black" />
-
+								<form:errors path="productionYear" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -134,6 +134,7 @@
 						<div class="col-lg-10">
 							<form:input id="productionCountry" path="productionCountry"
 								type="text" class="form:input-large" style="color:black" />
+									<form:errors path="productionCountry" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -144,6 +145,7 @@
 						<div class="col-lg-10">
 							<form:input id="director" path="director" type="text"
 								class="form:input-large" style="color:black" />
+									<form:errors path="director" class="text-danger" />
 						</div>
 					</div>
 
@@ -154,6 +156,7 @@
 						<div class="col-lg-10">
 							<form:input id="length" path="length" type="text"
 								class="form:input-large" style="color:black" />
+									<form:errors path="length" class="text-danger" />
 						</div>
 					</div>
 
@@ -165,6 +168,7 @@
 						<div class="col-lg-10">
 							<form:input type="text" class="form:input-large"
 								style="color:black" id="genre" path="genre" />
+									<form:errors path="genre" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -173,6 +177,7 @@
 						<div class="col-lg-offset-2 col-lg-10">
 							<input type="submit" id="btnAdd" class="btn btn-primary"
 								value="<spring:message code="add.Submit"/>" />
+								
 						</div>
 					</div>
 
@@ -218,10 +223,10 @@
 							<spring:message code="addSeanse.date" />
 						</label>
 						<div class="col-lg-10">
-							
+
 							<form:input id="date" path="date" type="text" name="date"
 								class="form:input-large" style="color:black" />
-	
+
 						</div>
 					</div>
 

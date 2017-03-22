@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity(name="Movies")
 @Table(name="Filmy")
@@ -16,8 +20,10 @@ public class Movie {
 	@Id
 	@GeneratedValue
 	private long movieId;
-	@Column(name="tytu³_angielski", nullable=false)
+	@Size(min=4, max = 29, message="{Size.User.username.validation}")
+	@Column(name="tytu³_angielski")
 	private String englishTitle;
+	@Pattern(regexp="[0-9]", message="JA NIE MOGE")
 	@Column(name="tytu³_polski")
 	private String polishTitle;
 	@Column(name="rok_produkcji")
@@ -30,6 +36,7 @@ public class Movie {
 	private int length;
 	@Column(name="gatunek")
 	private String genre;
+	
 	public String getGenre() {
 		return genre;
 	}

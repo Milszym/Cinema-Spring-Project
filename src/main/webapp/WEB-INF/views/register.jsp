@@ -73,7 +73,8 @@
 			<form:form action="register" modelAttribute="newUser"
 				class="form-horizontal" enctype="form-data">
 
-
+			<form:errors path="*" cssClass="alert alert-danger" element="div" />
+			
 				<fieldset>
 
 					<legend style="color: white">
@@ -89,7 +90,7 @@
 						<div class="col-lg-10">
 							<form:input id="username" path="username" type="text"
 								class="form:input-large" style="color:black" />
-
+							<form:errors path="username" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -100,7 +101,7 @@
 						<div class="col-lg-10">
 							<form:input id="password" path="password" type="text"
 								class="form:input-large" style="color:black" />
-
+							<form:errors path="password" cssClass="text-danger" />
 						</div>
 					</div>
 
@@ -112,7 +113,7 @@
 						<div class="col-lg-10">
 							<form:input id="matchingPassword" path="matchingPassword" type="text"
 								class="form:input-large" style="color:black" />
-
+							<form:errors path="matchingPassword" class="text-danger" />
 						</div>
 					</div>
 
